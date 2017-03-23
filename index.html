@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="searchApp">
+    <head>
+        <title>AngularJS Weather Forecast SPA</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="bootstrap.css" />
+        <script src="jquery-3.1.1.js"></script>
+        <script src="bootstrap.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            html, body, input, select, textarea
+            {
+                font-size: 1.05em !important;
+            }
+        </style>
+        
+        <!-- load angular via CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-resource.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.min.js"></script>
+        <script src="searchModule.js"></script>
+        <script src="restangular.js"></script>
+        <script src="app.js"></script>
+        
+    
+    </head>
+    <body>
+
+        <header>
+			<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">AngularJS weather</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a ui-sref="home"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a ui-sref="about"><i class="fa fa-info-circle"></i>About</a></li>
+				</ul>
+			</div>
+		</header>
+
+        <div>
+          
+            <div ui-view></div>
+
+		</div>
+    </body>
+</html>
