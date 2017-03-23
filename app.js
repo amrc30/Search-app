@@ -30,7 +30,7 @@ myApp.service('PagerService', function PagerService() {
         currentPage = currentPage || 1;
  
         // default page size is 10
-        pageSize = pageSize || 10;
+        pageSize = pageSize;
  
         // calculate total pages
         var totalPages = Math.ceil(totalItems / pageSize);
@@ -81,30 +81,14 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
 	$scope.searchString = '';
 
     $scope.pager = {};
+    $scope.pager.pageSize = 10;
     
+   
  
-    // initController();
- 
-    // function initController() {
-    //     // initialize to page 1
-    //     $scope.setPage(1);
-    // }
- 
-    // function setPage(page) {
-    //     if (page < 1 || page > $scope.pager.totalPages) {
-    //         return;
-    //     }
- 
-    //     // get pager object from service
-    //     $scope.pager = PagerService.GetPager($scope.movies.Search.length, page);
- 
-    //     // get current page of items
-    //     $scope.items = $scope.movies.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-    // }
-	
-	$scope.$watch('searchString', function (oldVal, newVal) {
+   	$scope.pager.currentPage = 1;
+	$scope.$watchGroup(['searchString', 'pager.currentPage'], function (newVal, oldVal) {
 	if (oldVal !== newVal){
-	var myUrl = 'http://www.omdbapi.com/?s=' + $scope.searchString;
+	var myUrl = 'http://www.omdbapi.com/?s=' + $scope.searchString + '&page=' + $scope.pager.currentPage;
 	$http({
   method: 'GET',
   url: myUrl
@@ -113,62 +97,33 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
     // when the response is available
   
     $scope.data = response.data;
-    // $scope.data = _.range(1, $scope.data.totalResults);
-    // $scope.setPage = function (page) {
-    //     if (page < 1 || page > $scope.pager.totalPages) {
-    //         return;
-    //     }
- 
-    //     // get pager object from service
-    //     $scope.pager = PagerService.GetPager($scope.data.Search.length, page);
- 
-    //     // get current page of items
-    //     $scope.items = $scope.data.Search.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-    // }
+    $scope.dataRange = _.range(1, $scope.data.totalResults);
+    $scope.setPage = function (page) {
+    $scope.pager = PagerService.GetPager($scope.data.totalResults, page);
+  }
+  $scope.pager.totalPages = Math.ceil($scope.data.totalResults / $scope.pager.pageSize);
 })
 }
-
-	})
-
-// initController();
- 
-//     function initController() {
-//         // initialize to page 1
-//         $scope.setPage(1);
-//     }
-
-//     myApp.filter('searchFor', function(){
-
-// 	// All filters must return a function. The first parameter
-// 	// is the data that is to be filtered, and the second is an
-// 	// argument that may be passed with a colon (searchFor:searchString)
-
-// 	return function(arr, searchString){
-
-// 		if(!searchString){
-// 			return arr;
-// 		}
-
-// 		var result = [];
-
-// 		searchString = searchString.toLowerCase();
-
-// 		// Using the forEach helper method to loop through the array
-// 		angular.forEach(arr, function(item){
-
-// 			if(item.title.toLowerCase().indexOf(searchString) !== -1){
-// 				result.push(item);
-// 			}
-
-// 		});
-
-// 		return result;
-// 	};
-
-// });
-
-
-
+    })
+ var startPage, endPage;
+        if ( $scope.pager.totalPages <= 10) {
+            // less than 10 total pages so show all
+            startPage = 1;
+            endPage =  $scope.pager.totalPages;
+        } else {
+            // more than 10 total pages so calculate start and end pages
+            if ($scope.pager.currentPage <= 6) {
+                startPage = 1;
+                endPage = 10;
+            } else if ($scope.pager.currentPage + 4 >=  $scope.pager.totalPages) {
+                startPage =  $scope.pager.totalPages - 9;
+                endPage =  $scope.pager.totalPages;
+            } else {
+                startPage = $scope.pager.currentPage - 5;
+                endPage = $scope.pager.currentPage + 4;
+            }
+        }
+    $scope.pager.pages = _.range(startPage, endPage);
 }]);
 myApp.controller('forecastCtrl', ['$scope', function ($scope) {
    

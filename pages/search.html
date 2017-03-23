@@ -1,19 +1,16 @@
-	<div class="bar">
+	<div class="col-lg-offset-2 col-lg-8">
 			<!-- Create a binding between the searchString model and the text field -->
-			<input type="search" ng-model="searchString" placeholder="Enter your movie name" />
+			<input class='form-control' type="search" ng-model="searchString" placeholder="Enter your movie name" />
 		</div>
 
-		<ul>
-			 <!--Render a li element for every entry in the items array. Notice
-				 the custom search filter "searchFor". It takes the value of the
-				 searchString model as an argument.-->
-			 
-			<li ng-repeat="movie in data.Search">
-				<p>{{movie.Title}}</p>
+		<ul class="col-lg-offset-2 col-lg-8">
+			<li style= "list-style:none" ng-repeat="movie in data.Search">
+				<a><span>{{movie.Title}} {{movie.imdbID}}</span></a>
+				<!--<a><p>{{movie.imdbID}}</p></a>-->
 			</li>
 		</ul>
-
-		<!--<ul ng-if="pager.pages.length" class="pagination">
+<div class="col-lg-offset-2 col-lg-8" ng-if="data.totalResults>10">
+		<ul class="pagination">
             <li ng-class="{disabled:pager.currentPage === 1}">
                 <a ng-click="setPage(1)">First</a>
             </li>
@@ -29,4 +26,5 @@
             <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
                 <a ng-click="setPage(pager.totalPages)">Last</a>
             </li>
-        </ul>-->
+        </ul>
+</div>
