@@ -30,7 +30,7 @@ myApp.service('PagerService', function PagerService() {
         currentPage = currentPage || 1;
  
         // default page size is 10
-        pageSize = pageSize;
+        pageSize = pageSize || 10;
  
         // calculate total pages
         var totalPages = Math.ceil(totalItems / pageSize);
@@ -102,10 +102,7 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
     $scope.pager = PagerService.GetPager($scope.data.totalResults, page);
   }
   $scope.pager.totalPages = Math.ceil($scope.data.totalResults / $scope.pager.pageSize);
-})
-}
-    })
- var startPage, endPage;
+  var startPage, endPage;
         if ( $scope.pager.totalPages <= 10) {
             // less than 10 total pages so show all
             startPage = 1;
@@ -115,7 +112,7 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
             if ($scope.pager.currentPage <= 6) {
                 startPage = 1;
                 endPage = 10;
-            } else if ($scope.pager.currentPage + 4 >=  $scope.pager.totalPages) {
+            } else if ($scope.pager.currentPage + 4 >=  $scope.pager.totalPages || $scope.pager.currentPage === $scope.pager.totalPages) {
                 startPage =  $scope.pager.totalPages - 9;
                 endPage =  $scope.pager.totalPages;
             } else {
@@ -123,9 +120,12 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
                 endPage = $scope.pager.currentPage + 4;
             }
         }
-    $scope.pager.pages = _.range(startPage, endPage);
+    $scope.pager.pages = _.range(startPage, endPage + 1);
+})
+}
+    })
+ 
 }]);
 myApp.controller('forecastCtrl', ['$scope', function ($scope) {
    
 }]);
-
