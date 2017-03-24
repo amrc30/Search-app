@@ -4,6 +4,7 @@ myApp.controller('searchCtrl', ['$scope', '$http', 'PagerService', function ($sc
 
     $scope.pager = {};
     $scope.pager.pageSize = 10;
+    $scope.pager.currentPage = 1;
     $scope.searchByName = function () {
         $scope.IdSearch = false;
     }
@@ -14,8 +15,9 @@ myApp.controller('searchCtrl', ['$scope', '$http', 'PagerService', function ($sc
     $scope.detail = function (item) {
         $scope.movieDetail = item;
     }
-    $scope.pager.currentPage = 1;
-
+    $scope.backToSearch = function (){
+        $scope.movieDetail = null;
+    }
     $scope.$watchGroup(['searchString', 'pager.currentPage'], function (newVal, oldVal) {
         if (oldVal !== newVal) {
             var myUrl = 'http://www.omdbapi.com/?s=' + $scope.searchString + '&page=' + $scope.pager.currentPage;
@@ -27,11 +29,17 @@ myApp.controller('searchCtrl', ['$scope', '$http', 'PagerService', function ($sc
                 // when the response is available
 
                 $scope.data = response.data;
-                $scope.dataRange = _.range(1, $scope.data.totalResults);
                 $scope.setPage = function (page) {
                     $scope.pager = PagerService.GetPager($scope.data.totalResults, page);
                 }
                 $scope.pager.totalPages = Math.ceil($scope.data.totalResults / $scope.pager.pageSize);
+                if($scope.pager.currentPage === $scope.pager.totalPages ){
+                $scope.resend = $scope.data.totalResults;
+                }
+                else{
+                $scope.resend = $scope.data.Search.length*$scope.pager.currentPage;
+                }
+                $scope.resstart = $scope.resend-($scope.data.Search.length - 1);
                 var startPage, endPage;
                 if ($scope.pager.totalPages <= 10) {
                     // less than 10 total pages so show all
