@@ -1,1 +1,0 @@
-var myApp = angular.module('searchApp', ['ui.router', 'restangular']);

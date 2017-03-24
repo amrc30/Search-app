@@ -1,0 +1,9 @@
+html, body, input
+    {
+        font-size: 1.05em !important;
+    }
+a
+    {
+        cursor: pointer;
+    }
+        
