@@ -1,0 +1,13 @@
+<div class="row col-lg-offset-2 col-lg-4 form-group">
+<a ui-sref="search"><button class="btn btn-primary">Search by movie name</button></a>
+</div>
+
+<div class="form-group col-lg-offset-2 col-lg-8">
+			<!-- Create a binding between the searchString model and the text field -->
+			<input class='form-control' type="search" ng-model="idString" placeholder="Enter your movie Id" />
+            <button class='btn btn-primary' ng-click='searchId()'>Search Movie</button>
+            Movie Details:
+            <span>{{info.Title}}</span>
+			
+		</div>
+       

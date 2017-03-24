@@ -9,11 +9,11 @@ $urlRouterProvider.otherwise('/search');
         templateUrl: 'pages/search.html',
         controller: 'searchCtrl'
     })
-    .state('detail', {
-        url:'/detail',
-        templateUrl: 'pages/detail.html',
-        controller: 'detailCtrl'
-    }) 
+    .state('id', {
+        url:'/id',
+        templateUrl: 'pages/id.html',
+        controller: 'idCtrl'
+    })
 });
 
 myApp.service('PagerService', function PagerService() {
@@ -82,10 +82,18 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
 
     $scope.pager = {};
     $scope.pager.pageSize = 10;
-    
-   
- 
+    $scope.searchByName = function() {
+        $scope.IdSearch = false;
+    }
+    $scope.searchById = function() {
+        $scope.IdSearch = true;
+    }
+    $scope.movieDetail = null;
+    $scope.detail = function (item){
+        $scope.movieDetail = item;
+    } 
    	$scope.pager.currentPage = 1;
+    
 	$scope.$watchGroup(['searchString', 'pager.currentPage'], function (newVal, oldVal) {
 	if (oldVal !== newVal){
 	var myUrl = 'http://www.omdbapi.com/?s=' + $scope.searchString + '&page=' + $scope.pager.currentPage;
@@ -120,12 +128,28 @@ myApp.controller('searchCtrl', ['$scope','$http', 'PagerService', function ($sco
                 endPage = $scope.pager.currentPage + 4;
             }
         }
-    $scope.pager.pages = _.range(startPage, endPage + 1);
+    $scope.pages = _.range(startPage, endPage + 1);
 })
 }
     })
  
 }]);
-myApp.controller('forecastCtrl', ['$scope', function ($scope) {
-   
-}]);
+myApp.controller('idCtrl', ['$scope', '$http', 'PagerService',function($scope, $http, PagerService){
+$scope.pager = {};
+$scope.pager.pageSize = 10;
+$scope.pager.currentPage = 1;
+$scope.idString='';
+$scope.searchId = function () {
+	var myUrl1 = 'http://www.omdbapi.com/?i=' + $scope.idString;
+	$http({
+  method: 'GET',
+  url: myUrl1
+}).then(function successCallback(response) {
+    // this callback will be called asynchronously
+    // when the response is available
+  
+    $scope.info = response.data;
+})
+    
+}  
+}])
