@@ -1,12 +1,69 @@
-html, body, input
-    {
-        font-size: 1.05em !important;
-    }
 a
-    {
-        cursor: pointer;
-    }
+{
+    cursor: pointer;
+}
 #myli
-    {
-        list-style: none;
-    }  
+{
+    list-style: none;
+}
+#myul 
+{
+    padding-left: 15px;
+}
+#btn1, #btn2
+{
+    margin-top:50px;
+}
+button
+{
+    box-shadow: 0 5px #666666;
+}
+button:active
+{
+    box-shadow: 0 0;
+}
+#inDiv, #srDiv 
+{
+    margin-top: 85px;
+}
+#grt
+{
+    font-size: 333%;
+    margin-top:200px;
+    color: #6969f9;
+}
+#bth
+{
+    margin-top:50px;
+}
+#sm
+{
+    margin-top:50px;
+}
+#sm:focus
+{
+    text-decoration: none;
+}
+#err{
+    color:#ff0000;
+}
+#info{
+    color:#d8ffff;
+    margin-top:200px;
+    font-size:150%;
+}
+#det
+{
+    color:#d8ffff;  
+    font-size:150%;  
+}
+#res
+{
+    color: #000000;
+}
+html
+{
+    background-image: url('https://blog.zingchart.com/content/images/2016/06/angularjsgoogle.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

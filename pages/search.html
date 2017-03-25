@@ -1,40 +1,39 @@
-<div class="row">
-    <div class="col-lg-push-9 col-lg-3 form-group">
-        <a ui-sref="id"><button class="btn btn-primary">Search by movie id</button></a>
+    <div class="form-group col-lg-offset-2 col-lg-8" >
+        <a ui-sref='home'><button id='bth' class='btn btn-primary fa fa-arrow-left'> Back to Home </button></a>
     </div>
-</div>
-
-<div class="row" ng-hide='movieDetail'>
-    <div class="form-group col-lg-offset-2 col-lg-8">
-    <!-- Create a binding between the searchString model and the text field -->
+    
+    <div class="form-group col-lg-offset-2 col-lg-8" id='inDiv' ng-hide='movieDetail'>
         <input class='form-control' type="search" ng-model="searchString" placeholder="Enter your movie name" />
     </div>
-</div>
-<div class='row' ng-if="data.Search" ng-hide='movieDetail'>
-    <div class="col-lg-offset-2 col-lg-8 form-group">
+    <div class="col-lg-10 form-group">
+        <a ui-sref="id"><button id='btn1' class="btn btn-primary pull-right">Search by movie id</button></a>
+    </div>
+    <div class="col-lg-push-5 col-lg-7 form-group"  id='res' ng-if="data.Search" ng-hide='movieDetail'>
         Results: {{resstart}}-{{resend}} of {{data.totalResults}}
     </div>
-</div>
-<ul class="col-lg-offset-2 col-lg-8 form-group" ng-hide='movieDetail'>
-    <li id='myli' ng-repeat="movie in data.Search">
+
+<ul class="col-lg-offset-2 col-lg-8 form-group list-group" id='myul' ng-hide='movieDetail'>
+    <li id='myli' class='list-group-item list-group-item-info' ng-repeat="movie in data.Search">
         <a ng-click="detail(movie)"><span>{{movie.Title}}</span></a>
     </li>
 </ul>
 
-<div class="col-lg-offset-4 col-lg-4" ng-if='movieDetail'>
-        <img ng-if="movieDetail.Poster!=='N/A'" src='{{movieDetail.Poster}}'>
+<div class="col-lg-offset-3 col-lg-3" ng-if='movieDetail'>
+    <img ng-if="movieDetail.Poster!=='N/A'" src='{{movieDetail.Poster}}'>
+</div>
+<div id='det' class='col-lg-3' ng-if='movieDetail'>
         <p>Title: {{movieDetail.Title}}</p>
         <p>Type: {{movieDetail.Type}}</p>
         <p>ID: {{movieDetail.imdbID}}</p>
 </div>
-<div class='row' ng-if='movieDetail'>
-    <div class='col-lg-offset-2 col-lg-8 form-group'>
+
+    <div ng-if='movieDetail' class='col-lg-offset-2 col-lg-8 form-group'>
     <button class='btn btn-primary' ng-click='backToSearch()'>Back to search</button>
     </div>
-</div>
 
 
-<div class="col-lg-offset-3 col-lg-6" ng-if="data.totalResults>10" ng-hide='movieDetail'>
+
+<div class="col-lg-push-4 col-lg-8" ng-if="data.totalResults>10" ng-hide='movieDetail'>
     <ul class="pagination">
         <li ng-class="{disabled:pager.currentPage === 1}">
             <a ng-click="setPage(1)">First</a>
@@ -42,7 +41,7 @@
         <li ng-class="{disabled:pager.currentPage === 1}">
             <a ng-click="setPage(pager.currentPage - 1)">Previous</a>
         </li>
-        <li ng-repeat="page in pages" ng-class="{active:pager.currentPage === page}">
+        <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
             <a ng-click="setPage(page)">{{page}}</a>
         </li>
         <li ng-class="{disabled:pager.currentPage === pager.totalPages}">

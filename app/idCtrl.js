@@ -1,4 +1,7 @@
-myApp.controller('idCtrl', ['$scope', '$http', function ($scope, $http) {
+myApp.controller('idCtrl', ['$scope', '$http', 'PagerService', function ($scope, $http, PagerService) {
+    $scope.pager = {};
+    $scope.pager.pageSize = 10;
+    $scope.pager.currentPage = 1;
     $scope.idString = '';
     $scope.searchId = function () {
         var myUrl1 = 'http://www.omdbapi.com/?i=' + $scope.idString;
