@@ -1,9 +1,13 @@
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/search');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
 
+        .state('home', {
+            url: '/home',
+            templateUrl: 'pages/home.html',
+        })
         .state('search', {
             url: '/search',
             templateUrl: 'pages/search.html',
