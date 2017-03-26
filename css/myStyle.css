@@ -50,7 +50,6 @@ button:active
 #info{
     color:#d8ffff;
     margin-top:50px;
-    margin-top:200px;
     font-size:150%;
 }
 #det
@@ -90,3 +89,4 @@ button:active
   -o-filter: blur(10px);
   -ms-filter: blur(10px);
   filter: blur(10px);
+}
