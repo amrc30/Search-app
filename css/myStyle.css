@@ -29,8 +29,8 @@ button:active
 #grt
 {
     font-size: 333%;
-    margin-top:200px;
-    color: #6969f9;
+    margin-top:250px;
+    color: teal;
 }
 #bth
 {
@@ -48,14 +48,16 @@ button:active
     color:#ff0000;
 }
 #info{
-    color:#d8ffff;
+    color:1D1D1D;
     margin-top:50px;
-    font-size:150%;
+    font-size:200%;
+    font-weight: semi-bold;
 }
 #det
 {
-    color:#d8ffff;  
-    font-size:150%;  
+    color:1D1D1D;  
+    font-size:200%;
+    font-weight: semi-bold;  
 }
 #res
 {
@@ -64,7 +66,19 @@ button:active
 
 .bl
 {
-  background-image: url('https://blog.zingchart.com/content/images/2016/06/angularjsgoogle.png');
+  background-image: url('https://previews.123rf.com/images/nasirkhan/nasirkhan1109/nasirkhan110900107/10743750-3d-transparent-film-strip-on-white-background-Stock-Photo-movie.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+.welcome
+{
+  background-image: url('https://image.shutterstock.com/z/stock-photo-cinema-film-roll-isolated-on-white-background-97756016.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   position: fixed;
@@ -81,7 +95,7 @@ button:active
   bottom: 0;
   right: 0;
   overflow: auto;
-   background-image: url('https://blog.zingchart.com/content/images/2016/06/angularjsgoogle.png');
+   background-image: url('https://cdn.shutterstock.com/shutterstock/videos/766603/thumb/1.jpg');
     background-repeat: no-repeat;
     background-size: 100%; /* Just to visualize the extent */
   -webkit-filter: blur(10px);
