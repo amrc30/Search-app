@@ -15,6 +15,10 @@
         Results: {{resstart}}-{{resend}} of {{data.totalResults}}
     </div>
 
+    <div class="col-lg-push-5 col-lg-7 form-group" id='res1' ng-if="msg !== ''" ng-hide='movieDetail'>
+        {{msg}}
+    </div>
+
     <ul class="col-lg-offset-2 col-lg-8 form-group list-group" id='myul' ng-hide='movieDetail'>
         <li id='myli' class='list-group-item list-group-item-info' ng-repeat="movie in data.Search">
             <a ng-click="detail(movie)"><span>{{movie.Title}}</span></a>
@@ -28,23 +32,24 @@
         <p>Title: {{movieDetail.Title}}</p>
         <p>Type: {{movieDetail.Type}}</p>
         <p>ID: {{movieDetail.imdbID}}</p>
-
+    </div>
     <div class="col-lg-push-4 col-lg-8" ng-if="data.totalResults" ng-hide='movieDetail'>
         <ul class="pagination">
-            <li ng-class="{disabled:pager.currentPage === 1}">
+            <li ng-class="{disabled:currentPage === 1}">
                 <a ng-click="setPage(1)">First</a>
             </li>
-            <li ng-class="{disabled:pager.currentPage === 1}">
-                <a ng-click="setPage(pager.currentPage - 1)">Previous</a>
+            <li ng-class="{disabled:currentPage === 1}">
+                <a ng-click="setPage(currentPage - 1)">Previous</a>
             </li>
-            <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+            <li ng-repeat="page in pager.pages" ng-class="{active:currentPage === page}">
                 <a ng-click="setPage(page)">{{page}}</a>
             </li>
-            <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
-                <a ng-click="setPage(pager.currentPage + 1)">Next</a>
+            <li ng-class="{disabled:currentPage === pager.totalPages}">
+                <a ng-click="setPage(currentPage + 1)">Next</a>
             </li>
-            <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+            <li ng-class="{disabled:currentPage === pager.totalPages}">
                 <a ng-click="setPage(pager.totalPages)">Last</a>
             </li>
         </ul>
     </div>
+</div>

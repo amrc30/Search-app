@@ -15,7 +15,10 @@ myApp.service('PagerService', function PagerService() {
         pageSize = pageSize || 10;
 
         // calculate total pages
-        var totalPages = Math.ceil(totalItems / pageSize);
+        if (currentPage !== 1 && pageSize < 10)
+            var totalpages = Math.ceil(totalItems / 10);
+        else
+            totalPages = Math.ceil(totalItems / pageSize);
 
         var startPage, endPage;
         if (totalPages <= 10) {
