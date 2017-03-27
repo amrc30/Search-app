@@ -1,3 +1,4 @@
+//routes for the app
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/home');

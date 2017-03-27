@@ -44,7 +44,7 @@ button:active
 {
     text-decoration: none;
 }
-#err{
+#err, #nposter{
     color:#ff0000;
     padding-top:50px;
 }
@@ -67,6 +67,7 @@ button:active
     left: 280px;
     width: 60%;
     height: 75%;
+    opacity:0.9;
 }
 #res, #res1
 {

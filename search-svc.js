@@ -1,3 +1,4 @@
+//page service for pagination
 myApp.service('PagerService', function PagerService() {
     // service definition
     var service = {};
@@ -15,12 +16,12 @@ myApp.service('PagerService', function PagerService() {
         pageSize = pageSize || 10;
 
         // calculate total pages
-        if (currentPage !== 1 && pageSize < 10)
+        if (currentPage !== 1 && pageSize < 10)             //calculate total pages differently when it is the last page
             var totalpages = Math.ceil(totalItems / 10);
         else
-            totalPages = Math.ceil(totalItems / pageSize);
+            totalPages = Math.ceil(totalItems / pageSize);  // total pages by default
 
-        var startPage, endPage;
+        var startPage, endPage;                 // variables to show start and end page numbers on the screen
         if (totalPages <= 10) {
             // less than 10 total pages so show all
             startPage = 1;
