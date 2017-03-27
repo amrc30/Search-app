@@ -15,6 +15,8 @@ myApp.controller('idCtrl', ['$scope', '$http', 'PagerService', function ($scope,
             $scope.info = response.data;
             if (response.data.Error)
                 $scope.error = response.data.Error;
+            else
+                $scope.error = '';
         })
     }
 }])

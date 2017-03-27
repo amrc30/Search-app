@@ -15,15 +15,15 @@
     <a ui-sref="search"><button class="btn btn-primary pull-right">Search by movie name</button></a>
 </div>
 
-<div ng-if='error' id='err' class="form-group col-lg-push-4 col-lg-8">
-    <strong>Error:</strong><span> {{error}}</span>
-</div>
 
-<div ng-if="info.Response==='True'">
-    <div class="form-group col-lg-push-2 col-lg-3">
+<div id='infopn' >
+    <div ng-if='error' id='err' ng-if="error!==''" class="form-group col-lg-push-4 col-lg-8">
+    <strong>Error:</strong><span> {{error}}</span>
+    </div>
+    <div class="form-group col-lg-push-2 col-lg-3" ng-if="info.Response==='True'" id='imge'>
         <img ng-if="info.Poster!=='N/A'" src='{{info.Poster}}'>
     </div>
-    <div id='info' class='col-lg-push-2 col-lg-3'>
+    <div id='info' ng-if="info.Response==='True'" class='col-lg-push-4 col-lg-5'>
         <p>Title: {{info.Title}}</p>
         <p>Type: {{info.Type}}</p>
         <p>ID: {{info.imdbID}}</p>

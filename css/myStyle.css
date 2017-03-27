@@ -30,7 +30,7 @@ button:active
 {
     font-size: 333%;
     margin-top:250px;
-    color: teal;
+    color: 	#008080;
 }
 #bth
 {
@@ -46,61 +46,68 @@ button:active
 }
 #err{
     color:#ff0000;
+    padding-top:50px;
 }
-#info{
-    color:1D1D1D;
-    margin-top:50px;
+#det, #info
+{
+    color:#ffffff;  
     font-size:200%;
     font-weight: semi-bold;
+    padding-top: 50px;  
 }
-#det
+#post, #imge 
 {
-    color:1D1D1D;  
-    font-size:200%;
-    font-weight: semi-bold;  
+    padding-top: 50px;
+}
+#detpn, #infopn
+{
+    background-color: #000000;
+    position: absolute;
+    top: 400px;
+    left: 280px;
+    width: 60%;
+    height: 75%;
 }
 #res, #res1
 {
-    color: #000000;
+    color: #ff0000;
 }
-
 .bl
 {
-  background-image: url('https://previews.123rf.com/images/nasirkhan/nasirkhan1109/nasirkhan110900107/10743750-3d-transparent-film-strip-on-white-background-Stock-Photo-movie.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
+    background-image: url('appimg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
 }
 .welcome
 {
-  background-image: url('https://image.shutterstock.com/z/stock-photo-cinema-film-roll-isolated-on-white-background-97756016.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
+    background-image: url('https://image.shutterstock.com/z/stock-photo-cinema-film-roll-isolated-on-white-background-97756016.jpg');
+    background-size: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
 }
 .fullscreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
-   background-image: url('https://cdn.shutterstock.com/shutterstock/videos/766603/thumb/1.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background-image: url('appimg.jpg');
     background-repeat: no-repeat;
     background-size: 100%; /* Just to visualize the extent */
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  -o-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
 }
